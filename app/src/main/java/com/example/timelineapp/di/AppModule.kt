@@ -3,8 +3,8 @@ package com.example.timelineapp.di
 import android.app.Application
 import androidx.room.Room
 import com.example.timelineapp.data.database.ItineraryDatabase
-import com.example.timelineapp.data.database.ItineraryRepository
-import com.example.timelineapp.data.database.ItineraryRepositoryImpl
+import com.example.timelineapp.data.database.repository.ItineraryRepository
+import com.example.timelineapp.data.database.repository.ItineraryRepositoryImpl
 import com.example.timelineapp.data.network.remote.BestItineraryApi
 import com.example.timelineapp.data.network.repository.BestItineraryImpl
 import com.example.timelineapp.domain.repository.BestItineraryRepository
@@ -49,6 +49,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideItineraryRepository(db: ItineraryDatabase): ItineraryRepository {
-        return ItineraryRepositoryImpl(db.dao)
+        return ItineraryRepositoryImpl(db.itineraryDao)
     }
 }

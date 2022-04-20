@@ -1,8 +1,7 @@
 package com.example.timelineapp.domain.usecase.get_all_places
 
-import com.example.timelineapp.data.database.ItineraryRepository
+import com.example.timelineapp.data.database.repository.ItineraryRepository
 import com.example.timelineapp.data.network.remote.dto.PlaceDto
-import com.example.timelineapp.data.network.remote.dto.convertToPlace
 import com.example.timelineapp.data.network.remote.dto.convertToStoragePlace
 import com.example.timelineapp.domain.repository.BestItineraryRepository
 import com.example.timelineapp.utilits.Resource

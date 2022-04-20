@@ -2,12 +2,15 @@ package com.example.timelineapp.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.timelineapp.data.database.models.StorageItinerary
+import com.example.timelineapp.data.database.dao.ItineraryDao
+import com.example.timelineapp.data.database.model.StorageItinerary
 
 @Database(
-    entities = [StorageItinerary::class],
+    entities = [
+        StorageItinerary::class
+    ],
     version = 1
 )
 abstract class ItineraryDatabase: RoomDatabase() {
-    abstract val dao: ItineraryDao
+    abstract val itineraryDao: ItineraryDao
 }

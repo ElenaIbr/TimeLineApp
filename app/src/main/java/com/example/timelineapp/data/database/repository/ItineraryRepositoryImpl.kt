@@ -1,11 +1,13 @@
-package com.example.timelineapp.data.database
+package com.example.timelineapp.data.database.repository
 
-import com.example.timelineapp.data.database.models.StorageItinerary
+import com.example.timelineapp.data.database.dao.ItineraryDao
+import com.example.timelineapp.data.database.model.StorageItinerary
 import kotlinx.coroutines.flow.Flow
 
 class ItineraryRepositoryImpl(
     private val dao: ItineraryDao
 ): ItineraryRepository {
+
     override suspend fun insertItinerary(storageItinerary: StorageItinerary) {
         dao.insertItinerary(storageItinerary)
     }
@@ -21,4 +23,5 @@ class ItineraryRepositoryImpl(
     override fun getItineraries(): Flow<List<StorageItinerary>> {
         return  dao.getItineraries()
     }
+
 }

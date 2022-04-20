@@ -1,9 +1,10 @@
-package com.example.timelineapp.data.database
+package com.example.timelineapp.data.database.repository
 
-import com.example.timelineapp.data.database.models.StorageItinerary
+import com.example.timelineapp.data.database.model.StorageItinerary
 import kotlinx.coroutines.flow.Flow
 
 interface ItineraryRepository {
+
     suspend fun insertItinerary(storageItinerary: StorageItinerary)
 
     suspend fun deleteItinerary(storageItinerary: StorageItinerary)
@@ -11,4 +12,5 @@ interface ItineraryRepository {
     suspend fun getItineraryById(id: Int): StorageItinerary?
 
     fun getItineraries(): Flow<List<StorageItinerary>>
+
 }

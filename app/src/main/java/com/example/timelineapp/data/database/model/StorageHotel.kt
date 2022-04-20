@@ -1,4 +1,4 @@
-package com.example.timelineapp.data.database.models
+package com.example.timelineapp.data.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

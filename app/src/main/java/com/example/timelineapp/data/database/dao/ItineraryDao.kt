@@ -1,11 +1,12 @@
-package com.example.timelineapp.data.database
+package com.example.timelineapp.data.database.dao
 
 import androidx.room.*
-import com.example.timelineapp.data.database.models.StorageItinerary
+import com.example.timelineapp.data.database.model.StorageItinerary
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ItineraryDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItinerary(itinerary: StorageItinerary)
 
@@ -17,4 +18,5 @@ interface ItineraryDao {
 
     @Query("SELECT * FROM storageitinerary")
     fun getItineraries(): Flow<List<StorageItinerary>>
+
 }
