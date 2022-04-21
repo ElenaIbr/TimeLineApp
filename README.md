@@ -1,4 +1,4 @@
-# TimeLineApp
+# TimelineApp
 
 Simple app for the best itinerary searching. There are two screens: for the itinerary searching and for the itinerary data. The first screen has to make network call to backend and get list of places (by string quaery). So using the search user chooses departue point and destination point. After that he chooses date of journery and goes to the second screen. The second screen has to make another one network call using departue point id, destination point id and the date. This request returns data about the best itinerary and dispays information. This itinerary also will be saved in local database. I have no sutable API, thats why i created TempAppData in data layer. When we get network error we just replace backend data by TempAppData.
 
