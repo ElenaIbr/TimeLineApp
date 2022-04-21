@@ -7,6 +7,7 @@
     <dimen name="itinerary_img_size">20dp</dimen>
     <dimen name="app_padding">16dp</dimen>
     <dimen name="app_small_padding">8dp</dimen>
+    <dimen name="app_big_padding">20dp</dimen>
     <dimen name="itinerary_elevation">4dp</dimen>
     <dimen name="itinerary_screen_height">40dp</dimen>
 

@@ -8,8 +8,8 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.compose.ui.unit.dp
 import com.example.timelineapp.R
 import com.yeocak.timelineview.TimelineView
 
@@ -31,8 +31,8 @@ fun PointInfoCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                vertical = 4.dp,
-                horizontal = 8.dp
+                vertical = dimensionResource(id = R.dimen.app_small_padding),
+                horizontal = dimensionResource(id = R.dimen.app_small_padding)
             )
     ) {
         TimelineView.SingleNode(color = Color(33, 33, 33),
@@ -40,7 +40,7 @@ fun PointInfoCard(
             nodeSize = 30f,
             modifier = Modifier
                 .padding(
-                    horizontal = 20.dp
+                    horizontal = dimensionResource(id = R.dimen.app_big_padding)
                 ),
             isChecked = false,
             isDashed = true)

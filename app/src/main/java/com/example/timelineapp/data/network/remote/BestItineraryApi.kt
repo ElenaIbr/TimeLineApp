@@ -1,6 +1,7 @@
 package com.example.timelineapp.data.network.remote
 
-import com.example.timelineapp.data.network.remote.dto.*
+import com.example.timelineapp.data.network.remote.dto.ItineraryDto
+import com.example.timelineapp.data.network.remote.dto.PlaceDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

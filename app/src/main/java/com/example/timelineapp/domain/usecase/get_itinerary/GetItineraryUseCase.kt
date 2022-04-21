@@ -2,7 +2,8 @@ package com.example.timelineapp.domain.usecase.get_itinerary
 
 import com.example.timelineapp.data.database.TempAppData
 import com.example.timelineapp.data.database.repository.ItineraryRepository
-import com.example.timelineapp.data.network.remote.dto.*
+import com.example.timelineapp.data.network.remote.dto.ItineraryDto
+import com.example.timelineapp.data.network.remote.dto.convertToStorageItinerary
 import com.example.timelineapp.domain.repository.BestItineraryRepository
 import com.example.timelineapp.utilits.Resource
 import kotlinx.coroutines.flow.Flow

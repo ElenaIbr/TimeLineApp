@@ -1,12 +1,12 @@
 package com.example.timelineapp.ui.bestitinerarysearch.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.timelineapp.domain.model.Place
-import com.example.timelineapp.domain.usecase.get_all_places.GetAllPlacesUseCase
-import com.example.timelineapp.utilits.Resource
 import androidx.lifecycle.viewModelScope
 import com.example.timelineapp.data.network.remote.dto.convertToPlace
+import com.example.timelineapp.domain.model.Place
+import com.example.timelineapp.domain.usecase.get_all_places.GetAllPlacesUseCase
 import com.example.timelineapp.ui.bestitinerarysearch.state.SearchUIState
+import com.example.timelineapp.utilits.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

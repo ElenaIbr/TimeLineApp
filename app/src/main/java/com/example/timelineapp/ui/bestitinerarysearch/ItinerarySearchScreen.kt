@@ -12,11 +12,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.timelineapp.R
+import com.example.timelineapp.ui.bestitinerarysearch.components.ItineraryItem
 import com.example.timelineapp.ui.bestitinerarysearch.departuresearch.DepartureSearchField
 import com.example.timelineapp.ui.bestitinerarysearch.destinationsearch.DestinationSearchField
-import com.example.timelineapp.ui.components.PrimaryButton
-import com.example.timelineapp.ui.bestitinerarysearch.components.ItineraryItem
 import com.example.timelineapp.ui.bestitinerarysearch.viewmodel.ItinerarySearchViewModel
+import com.example.timelineapp.ui.components.PrimaryButton
+import com.example.timelineapp.ui.components.PrimaryDatePicker
 import com.example.timelineapp.utilits.Constants
 import com.example.timelineapp.utilits.Routes
 
@@ -25,10 +26,11 @@ fun ItinerarySearchSearch(
     itinerarySearchViewModel: ItinerarySearchViewModel = hiltViewModel(),
     navController: NavController
 ) {
-    val  itineraries = itinerarySearchViewModel.tasks.collectAsState(initial = emptyList())
+    val  itineraries = itinerarySearchViewModel.itineraries.collectAsState(initial = emptyList())
 
     val departureId = remember { mutableStateOf("") }
     val destinationId = remember { mutableStateOf("") }
+    val itineraryDate = remember { mutableStateOf("") }
     var screen by remember { mutableStateOf(ItineraryScreenType.CreateScreen) }
 
     var tabIndex by remember { mutableStateOf(0) }
@@ -74,6 +76,10 @@ fun ItinerarySearchSearch(
                             .height(
                                 dimensionResource(id = R.dimen.search_field_height)
                             )
+                            .padding(
+                                vertical = dimensionResource(id = R.dimen.app_small_padding),
+                                horizontal = dimensionResource(id = R.dimen.app_small_padding)
+                            )
                     ) {
                         DepartureSearchField(
                             onPlaceChosen = { placeId ->
@@ -86,6 +92,10 @@ fun ItinerarySearchSearch(
                             .height(
                                 dimensionResource(id = R.dimen.search_field_height)
                             )
+                            .padding(
+                                vertical = dimensionResource(id = R.dimen.app_small_padding),
+                                horizontal = dimensionResource(id = R.dimen.app_small_padding)
+                            )
                     ) {
                         DestinationSearchField(
                             onPlaceChosen = { placeId ->
@@ -93,6 +103,11 @@ fun ItinerarySearchSearch(
                             }
                         )
                     }
+                    PrimaryDatePicker(
+                        onDataChosen = { date ->
+                            itineraryDate.value = date
+                        }
+                    )
                     Box(
                         modifier = Modifier
                             .fillMaxSize(),
@@ -100,12 +115,12 @@ fun ItinerarySearchSearch(
                     ) {
                         PrimaryButton(
                             title = stringResource(id = R.string.create_btn_title),
-                            enabled = departureId.value != "" && destinationId.value != "",
+                            enabled = departureId.value != "" && destinationId.value != "" && itineraryDate.value != "",
                             onClick = {
                                 navController.navigate(
                                     Routes.ITINERARY + "?${Constants.DEPARTURE_ID}=${departureId.value}"
                                             + "?${Constants.DESTINATION_ID}=${destinationId.value}"
-                                            + "?${Constants.ITINERARY_DATE}=${destinationId.value}"
+                                            + "?${Constants.ITINERARY_DATE}=${itineraryDate.value}"
                                             + "?${Constants.ITINERARY_ID}=${-1}"
                                             + "?${Constants.IS_NEW_ITINERARY}=${true}"
                                 )

@@ -7,15 +7,17 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.yeocak.timelineview.TimelineView
 import com.example.timelineapp.R
 import com.example.timelineapp.ui.bestitinerary.viewmodel.ItineraryViewModel
+import com.yeocak.timelineview.TimelineView
 
 @OptIn(
     ExperimentalUnitApi::class,
@@ -61,6 +63,17 @@ fun ItineraryScreen(
                     .fillMaxSize()
                     .padding(vertical = dimensionResource(id = R.dimen.app_padding))
             ) {
+                item {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = itineraryState.date.toString(),
+                            fontSize = 18.sp
+                        )
+                    }
+                }
                 item {
                     Box(
                         modifier = Modifier

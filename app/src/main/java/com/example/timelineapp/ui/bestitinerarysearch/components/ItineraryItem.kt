@@ -14,12 +14,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.timelineapp.R
 import com.example.timelineapp.data.database.model.StorageItinerary
+import com.example.timelineapp.ui.bestitinerarysearch.viewmodel.ItinerarySearchViewModel
 
 @Composable
 fun ItineraryItem(
     itinerary: StorageItinerary,
+    itinerarySearchViewModel: ItinerarySearchViewModel = hiltViewModel(),
     onClick: () -> Unit = {}
 ) {
     Card(
@@ -62,7 +65,7 @@ fun ItineraryItem(
             )
             IconButton(
                 onClick = {
-                    //onClick.invoke()
+                    itinerarySearchViewModel.deleteItinerary(itinerary)
                 }
             ) {
                 Image(

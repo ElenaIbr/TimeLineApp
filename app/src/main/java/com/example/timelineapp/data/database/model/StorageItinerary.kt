@@ -2,7 +2,6 @@ package com.example.timelineapp.data.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.timelineapp.data.network.remote.dto.ItineraryDto
 import com.example.timelineapp.domain.model.Itinerary
 
 @Entity

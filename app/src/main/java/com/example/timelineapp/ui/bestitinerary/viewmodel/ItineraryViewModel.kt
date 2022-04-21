@@ -55,6 +55,7 @@ class ItineraryViewModel @Inject constructor(
                     _itineraryState.value = ItineraryState(
                         itinerary = TempAppData.itinerary.convertToItinerary()
                     )
+                    _itineraryState.value.date = itineraryDate
                 }
                 is Resource.Loading -> {
                     _itineraryState.value = ItineraryState(isLoafing = true)

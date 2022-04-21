@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.timelineapp.ui.theme.Purple500
+import com.example.timelineapp.ui.theme.PrimaryButtonBackground
 
 @Composable
 fun PrimaryButton(
@@ -31,7 +31,7 @@ fun PrimaryButton(
             )
             .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = Purple500,
+            backgroundColor = PrimaryButtonBackground,
             disabledBackgroundColor = Color.LightGray,
             contentColor = Color.Black,
             disabledContentColor = Color.Black

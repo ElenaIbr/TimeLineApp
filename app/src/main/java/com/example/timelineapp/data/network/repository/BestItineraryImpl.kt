@@ -1,7 +1,8 @@
 package com.example.timelineapp.data.network.repository
 
 import com.example.timelineapp.data.network.remote.BestItineraryApi
-import com.example.timelineapp.data.network.remote.dto.*
+import com.example.timelineapp.data.network.remote.dto.ItineraryDto
+import com.example.timelineapp.data.network.remote.dto.PlaceDto
 import com.example.timelineapp.domain.repository.BestItineraryRepository
 import javax.inject.Inject
 
