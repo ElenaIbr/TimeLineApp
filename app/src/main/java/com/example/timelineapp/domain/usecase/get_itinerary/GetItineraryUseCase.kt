@@ -26,6 +26,10 @@ class GetItineraryUseCase @Inject constructor(
             emit(Resource.Success(itinerary))
         } catch(e: HttpException){
             emit(Resource.Error<ItineraryDto>(e.localizedMessage ?: "An unexpected error"))
+
+            if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
+                databaseRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
+            }
         } catch (e: IOException){
             emit(Resource.Error<ItineraryDto>("Couldn't reach server"))
 

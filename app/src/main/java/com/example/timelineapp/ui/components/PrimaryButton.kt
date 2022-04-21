@@ -10,8 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import com.example.timelineapp.ui.theme.PrimaryButtonBackground
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
+import com.example.timelineapp.R
 
 @Composable
 fun PrimaryButton(
@@ -22,16 +23,16 @@ fun PrimaryButton(
     Button(
         modifier = Modifier
             .padding(
-                16.dp
+                dimensionResource(id = R.dimen.app_padding)
             )
             .clip(
                 RoundedCornerShape(
-                    8.dp
+                    dimensionResource(id = R.dimen.app_small_padding)
                 )
             )
             .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = PrimaryButtonBackground,
+            backgroundColor = colorResource(id = R.color.teal_700),
             disabledBackgroundColor = Color.LightGray,
             contentColor = Color.Black,
             disabledContentColor = Color.Black

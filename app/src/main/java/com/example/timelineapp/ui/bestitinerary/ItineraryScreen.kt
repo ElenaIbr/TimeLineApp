@@ -69,7 +69,7 @@ fun ItineraryScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = itineraryState.date.toString(),
+                            text = itineraryState.date ?: "",
                             fontSize = 18.sp
                         )
                     }

@@ -2,7 +2,10 @@ package com.example.timelineapp.ui.components
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -12,6 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.sp
+import com.example.timelineapp.R
 import java.util.*
 
 @Composable
@@ -39,14 +45,18 @@ fun PrimaryDatePicker(
         }, mYear, mMonth, mDay
     )
 
-    Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                mDatePickerDialog.show()
+            },
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = {
-            mDatePickerDialog.show()
-        }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent) ) {
-            Text(text = "Choose date", color = Color.Black)
-        }
+        Image(
+            painter = painterResource(id = R.drawable.ic_monthly_calendar),
+            contentDescription = "calendar"
+        )
+        Text(text = "Choose date", color = Color.Black, fontSize = 20.sp)
     }
 }
