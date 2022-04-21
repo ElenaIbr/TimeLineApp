@@ -19,15 +19,17 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.timelineapp.R
 import com.example.timelineapp.ui.itinerarysearch.viewmodel.DepartureSearchViewModel
 
 @Composable
 fun DepartureSearchField(
-    searchViewModel: DepartureSearchViewModel = viewModel(),
+    searchViewModel: DepartureSearchViewModel = hiltViewModel(),
     onPlaceChosen: (String) -> Unit
 ) {
+
     val searchState by searchViewModel.searchState.collectAsState()
 
     var query: String by rememberSaveable { mutableStateOf("") }

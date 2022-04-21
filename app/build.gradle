@@ -97,4 +97,5 @@ dependencies {
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.17.0"
 
     implementation "androidx.compose.runtime:runtime-livedata:1.1.1"
+    implementation 'com.github.yeocak:ComposableTimelineView:0.6'
 }

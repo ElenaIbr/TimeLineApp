@@ -15,10 +15,10 @@ class GetAllPlacesUseCase @Inject constructor(
     private val networkRepository: BestItineraryRepository,
     private val dbRepository: ItineraryRepository
 ) {
-    operator fun invoke(): Flow<Resource<List<PlaceDto>>> = flow {
+    operator fun invoke(query: String): Flow<Resource<List<PlaceDto>>> = flow {
         try {
             emit(Resource.Loading())
-            val places = networkRepository.getAllPlaces()
+            val places = networkRepository.getAllPlaces(query)
             /*places.forEach { place ->
                 dbRepository.insertItinerary(place.convertToStoragePlace())
 

@@ -1,4 +1,4 @@
-package com.example.timelineapp.ui.itinerary
+package com.example.timelineapp.ui.itinerary.state
 
 import com.example.timelineapp.domain.model.Itinerary
 

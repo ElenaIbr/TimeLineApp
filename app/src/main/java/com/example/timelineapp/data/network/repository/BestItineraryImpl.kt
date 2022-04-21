@@ -12,8 +12,8 @@ class BestItineraryImpl @Inject constructor(
         return api.getBestItinerary(departureId, destinationId, date)
     }
 
-    override suspend fun getAllPlaces(): List<PlaceDto> {
-        return api.getAllPlaces()
+    override suspend fun getAllPlaces(query: String): List<PlaceDto> {
+        return api.getAllPlaces(query)
     }
 
 }

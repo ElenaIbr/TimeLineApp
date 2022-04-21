@@ -6,6 +6,6 @@ interface BestItineraryRepository {
 
     suspend fun getBestItinerary(departureId: String, destinationId: String, date: String) : ItineraryDto
 
-    suspend fun getAllPlaces() : List<PlaceDto>
+    suspend fun getAllPlaces(query: String) : List<PlaceDto>
 
 }

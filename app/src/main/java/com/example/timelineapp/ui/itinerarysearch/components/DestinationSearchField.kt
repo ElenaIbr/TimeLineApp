@@ -20,12 +20,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.timelineapp.ui.itinerarysearch.viewmodel.DestinationSearchViewModel
 
 @Composable
 fun DestinationSearchField(
-    searchViewModel: DestinationSearchViewModel = viewModel(),
+    searchViewModel: DestinationSearchViewModel = hiltViewModel(),
     onPlaceChosen: (String) -> Unit
 ) {
     val searchState by searchViewModel.searchState.collectAsState()

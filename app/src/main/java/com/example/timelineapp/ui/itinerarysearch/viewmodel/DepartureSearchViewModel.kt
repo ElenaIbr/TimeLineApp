@@ -24,7 +24,7 @@ class DepartureSearchViewModel @Inject constructor(
     val searchState: StateFlow<SearchUIState> = _searchState
 
     fun getSearchResult(query: String) {
-        getAllPlacesUseCase().onEach { result ->
+        getAllPlacesUseCase(query).onEach { result ->
             when(result) {
                 is Resource.Success -> {
                     val resultList: MutableList<Place> = mutableListOf()

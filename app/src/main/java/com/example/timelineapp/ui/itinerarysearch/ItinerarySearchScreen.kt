@@ -6,12 +6,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.timelineapp.ui.itinerarysearch.departuresearch.DepartureSearchField
 import com.example.timelineapp.ui.itinerarysearch.destinationsearch.DestinationSearchField
 import com.example.timelineapp.ui.components.PrimaryButton
+import com.example.timelineapp.utilits.Routes
+import com.example.timelineapp.utilits.UiEvent
 
 @Composable
-fun ItinerarySearchSearch() {
+fun ItinerarySearchSearch(
+    navController: NavController
+) {
 
     val departureId = remember { mutableStateOf("") }
     val destinationId = remember { mutableStateOf("") }
@@ -39,7 +44,6 @@ fun ItinerarySearchSearch() {
                 )
             }
         }
-
     }
     Box(
         modifier = Modifier
@@ -47,10 +51,10 @@ fun ItinerarySearchSearch() {
         contentAlignment = Alignment.BottomEnd
     ) {
         PrimaryButton(
-            title = "Create",
+            title = "Create Itinerary",
             enabled = departureId.value != "" && destinationId.value != "",
             onClick = {
-
+                navController.navigate(Routes.ITINERARY)
             }
         )
     }

@@ -27,7 +27,9 @@ class GetItineraryUseCase @Inject constructor(
         } catch (e: IOException){
             emit(Resource.Error<ItineraryDto>("Couldn't reach server"))
 
-            dbRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
+            if (dbRepository.getItineraryById(TempAppData.itinerary.id) == null) {
+                dbRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
+            }
         }
     }
 }
