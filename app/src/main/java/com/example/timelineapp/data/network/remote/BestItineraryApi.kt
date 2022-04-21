@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface BestItineraryApi {
+
     @GET("get-best-itinerary")
     suspend fun getBestItinerary(
         @Query("departure_id") departureId: String,
@@ -16,4 +17,5 @@ interface BestItineraryApi {
     suspend fun getAllPlaces(
         @Query("query") query: String
     ): List<PlaceDto>
+
 }

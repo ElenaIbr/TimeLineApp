@@ -8,7 +8,12 @@ import javax.inject.Inject
 class BestItineraryImpl @Inject constructor(
     private val api: BestItineraryApi
 ): BestItineraryRepository {
-    override suspend fun getBestItinerary(departureId: String, destinationId: String, date: String): ItineraryDto {
+
+    override suspend fun getBestItinerary(
+        departureId: String,
+        destinationId: String,
+        date: String
+    ): ItineraryDto {
         return api.getBestItinerary(departureId, destinationId, date)
     }
 

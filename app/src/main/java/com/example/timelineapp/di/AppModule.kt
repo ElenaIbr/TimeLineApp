@@ -8,6 +8,7 @@ import com.example.timelineapp.data.database.repository.ItineraryRepositoryImpl
 import com.example.timelineapp.data.network.remote.BestItineraryApi
 import com.example.timelineapp.data.network.repository.BestItineraryImpl
 import com.example.timelineapp.domain.repository.BestItineraryRepository
+import com.example.timelineapp.utilits.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +25,7 @@ object AppModule {
     @Singleton
     fun provideBestItineraryApi(): BestItineraryApi {
         return Retrofit.Builder()
-            .baseUrl("https://stackoverflow.com/")
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(BestItineraryApi::class.java)
@@ -42,7 +43,7 @@ object AppModule {
         return Room.databaseBuilder(
             app,
             ItineraryDatabase::class.java,
-            "itinerary_table"
+            Constants.ITINERARY_TABLE_TITLE
         ).build()
     }
 

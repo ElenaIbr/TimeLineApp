@@ -1,4 +1,4 @@
-package com.example.timelineapp.ui.itinerary
+package com.example.timelineapp.ui.bestitinerary
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
@@ -7,17 +7,15 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.yeocak.timelineview.TimelineView
 import com.example.timelineapp.R
-import com.example.timelineapp.ui.components.PrimaryButton
-import com.example.timelineapp.ui.itinerary.viewmodel.ItineraryViewModel
+import com.example.timelineapp.ui.bestitinerary.viewmodel.ItineraryViewModel
 
 @OptIn(
     ExperimentalUnitApi::class,
@@ -26,30 +24,27 @@ import com.example.timelineapp.ui.itinerary.viewmodel.ItineraryViewModel
 )
 @Composable
 fun ItineraryScreen(
-    viewModel: ItineraryViewModel = hiltViewModel(),
-    OnBackStack: () -> Unit
+    itineraryViewModel: ItineraryViewModel = hiltViewModel(),
+    onBackStack: () -> Unit
 ) {
-    val state = viewModel.state.value
 
-    LaunchedEffect(key1 = Unit) {
-        viewModel.getItinerary("", "", "")
-    }
+    val itineraryState = itineraryViewModel.itineraryState.value
 
     Scaffold(
         topBar = {
             TopAppBar(
                 modifier = Modifier
                     .height(
-                        40.dp
+                        dimensionResource(id = R.dimen.itinerary_screen_height)
                     ),
                 title = {
                     Text(
-                        text = "The Best Itinerary"
+                        text = stringResource(id = R.string.best_itinerary)
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        OnBackStack.invoke()
+                        onBackStack.invoke()
                     }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
@@ -61,18 +56,22 @@ fun ItineraryScreen(
             )
         },
         content = {
-            LazyColumn {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(vertical = dimensionResource(id = R.dimen.app_padding))
+            ) {
                 item {
                     Box(
                         modifier = Modifier
                             .fillParentMaxHeight(0.3F)
                     ) {
                         PointInfoCard(
-                            cardName = "Best Flight",
+                            cardName = stringResource(id = R.string.best_flight),
                             type = TimelineView.NodeType.FIRST,
-                            title = state.itinerary?.flightTitle ?: "",
-                            phone = state.itinerary?.flightDate ?: "",
-                            address = state.itinerary?.flightNumber ?: "",
+                            title = itineraryState.itinerary?.flightTitle ?: "",
+                            phone = itineraryState.itinerary?.flightDate ?: "",
+                            address = itineraryState.itinerary?.flightNumber ?: "",
                             image = R.drawable.ic_flight_airplane
                         )
                     }
@@ -83,14 +82,13 @@ fun ItineraryScreen(
                             .fillParentMaxHeight(0.3F)
                     ) {
                         PointInfoCard(
-                            cardName = "Best Hotel",
+                            cardName = stringResource(id = R.string.best_hotel),
                             type = TimelineView.NodeType.MIDDLE,
-                            title = state.itinerary?.hotelTitle ?: "",
-                            phone = state.itinerary?.hotelPhone ?: "",
-                            address = state.itinerary?.hotelAddress ?: "",
+                            title = itineraryState.itinerary?.hotelTitle ?: "",
+                            phone = itineraryState.itinerary?.hotelPhone ?: "",
+                            address = itineraryState.itinerary?.hotelAddress ?: "",
                             image = R.drawable.ic_hotel
                         )
-
                     }
                 }
                 item {
@@ -99,11 +97,11 @@ fun ItineraryScreen(
                             .fillParentMaxHeight(0.3F)
                     ) {
                         PointInfoCard(
-                            cardName = "Best Car Rent",
+                            cardName = stringResource(id = R.string.best_car_rent),
                             type = TimelineView.NodeType.LAST,
-                            title = state.itinerary?.carRentTitle ?: "",
-                            phone = state.itinerary?.carRentPhone ?: "",
-                            address = state.itinerary?.carRentAddress ?: "",
+                            title = itineraryState.itinerary?.carRentTitle ?: "",
+                            phone = itineraryState.itinerary?.carRentPhone ?: "",
+                            address = itineraryState.itinerary?.carRentAddress ?: "",
                             image = R.drawable.ic_car
                         )
                     }

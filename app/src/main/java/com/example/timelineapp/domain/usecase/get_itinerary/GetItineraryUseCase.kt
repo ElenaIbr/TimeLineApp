@@ -12,23 +12,24 @@ import java.io.IOException
 import javax.inject.Inject
 
 class GetItineraryUseCase @Inject constructor(
-    private val repository: BestItineraryRepository,
-    private val dbRepository: ItineraryRepository
+    private val networkRepository: BestItineraryRepository,
+    private val databaseRepository: ItineraryRepository
 ) {
     operator fun invoke(departureId: String, destinationId: String, date: String): Flow<Resource<ItineraryDto>> = flow {
         try {
             emit(Resource.Loading())
-            val itinerary = repository.getBestItinerary(departureId, destinationId, date)
-            dbRepository.insertItinerary(itinerary.convertToStorageItinerary())
-
+            val itinerary = networkRepository.getBestItinerary(departureId, destinationId, date)
+            if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
+                databaseRepository.insertItinerary(itinerary.convertToStorageItinerary())
+            }
             emit(Resource.Success(itinerary))
         } catch(e: HttpException){
             emit(Resource.Error<ItineraryDto>(e.localizedMessage ?: "An unexpected error"))
         } catch (e: IOException){
             emit(Resource.Error<ItineraryDto>("Couldn't reach server"))
 
-            if (dbRepository.getItineraryById(TempAppData.itinerary.id) == null) {
-                dbRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
+            if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
+                databaseRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
             }
         }
     }

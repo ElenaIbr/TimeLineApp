@@ -3,19 +3,15 @@ package com.example.timelineapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.timelineapp.ui.itinerary.ItineraryScreen
-import com.example.timelineapp.ui.itinerarysearch.ItinerarySearchSearch
+import com.example.timelineapp.ui.bestitinerary.ItineraryScreen
+import com.example.timelineapp.ui.bestitinerarysearch.ItinerarySearchSearch
 import com.example.timelineapp.ui.theme.TimeLineAppTheme
+import com.example.timelineapp.utilits.Constants
 import com.example.timelineapp.utilits.Routes
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,15 +21,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TimeLineAppTheme {
-                /*Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    //ItineraryScreen()
-                    ItinerarySearchSearch()
-                }*/
-
-
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
@@ -45,35 +32,40 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable(
-                        route = Routes.ITINERARY + "?departureId={departureId}" + "?destinationId={destinationId}" + "?date={date}",
+                        route = Routes.ITINERARY
+                                + "?${Constants.DEPARTURE_ID}={${Constants.DEPARTURE_ID}}"
+                                + "?${Constants.DESTINATION_ID}={${Constants.DESTINATION_ID}}"
+                                + "?${Constants.ITINERARY_DATE}={${Constants.ITINERARY_DATE}}"
+                                + "?${Constants.ITINERARY_ID}={${Constants.ITINERARY_ID}}"
+                                + "?${Constants.IS_NEW_ITINERARY}={${Constants.IS_NEW_ITINERARY}}",
                         arguments = listOf(
-                            navArgument(name = "departureId") {
+                            navArgument(name = Constants.DEPARTURE_ID) {
                                 type = NavType.StringType
                                 defaultValue = ""
                             },
-                            navArgument(name = "destinationId") {
+                            navArgument(name = Constants.DESTINATION_ID) {
                                 type = NavType.StringType
                                 defaultValue = ""
                             },
-                            navArgument(name = "date") {
+                            navArgument(name = Constants.ITINERARY_DATE) {
                                 type = NavType.StringType
                                 defaultValue = ""
+                            },
+                            navArgument(name = Constants.ITINERARY_ID) {
+                                type = NavType.IntType
+                                defaultValue = -1
+                            },
+                            navArgument(name = Constants.IS_NEW_ITINERARY) {
+                                type = NavType.BoolType
+                                defaultValue = true
                             }
-
                         )
                     ) {
-                        ItineraryScreen(OnBackStack = {
-                            navController.popBackStack()
-                        })
+                        ItineraryScreen(
+                            onBackStack = { navController.popBackStack() }
+                        )
                     }
                 }
-                /*Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    //ItineraryScreen()
-                    //ItinerarySearchSearch()
-                }*/
             }
         }
     }

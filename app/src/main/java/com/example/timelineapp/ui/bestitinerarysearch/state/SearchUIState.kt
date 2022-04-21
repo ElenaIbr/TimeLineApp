@@ -1,4 +1,4 @@
-package com.example.timelineapp.ui.itinerarysearch.state
+package com.example.timelineapp.ui.bestitinerarysearch.state
 
 import com.example.timelineapp.domain.model.Place
 

@@ -66,25 +66,3 @@ fun ItineraryDto.convertToStorageItinerary(): StorageItinerary {
         carRentPhone = this.carRentPhone
     )
 }
-
-fun StorageItinerary.convertToItinerary(): ItineraryDto {
-    return ItineraryDto(
-        id = this.id ?: 1,
-        departureId = this.departureId,
-        destinationId = this.destinationId,
-        distance = this.distance,
-        flightTitle = this.flightTitle,
-        flightNumber = this.flightNumber,
-        flightDate = this.flightDate,
-        hotelTitle = this.hotelTitle,
-        hotelCity = this.hotelCity,
-        hotelAddress = this.hotelAddress,
-        hotelImage = this.hotelImage,
-        hotelPhone = this.hotelPhone,
-        carRentTitle = this.carRentTitle,
-        carRentCity = this.carRentCity,
-        carRentAddress = this.carRentAddress,
-        carRentImage = this.carRentImage,
-        carRentPhone = this.carRentPhone
-    )
-}

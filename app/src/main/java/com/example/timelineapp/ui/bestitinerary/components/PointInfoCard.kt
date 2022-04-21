@@ -1,4 +1,4 @@
-package com.example.timelineapp.ui.itinerary
+package com.example.timelineapp.ui.bestitinerary
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Row

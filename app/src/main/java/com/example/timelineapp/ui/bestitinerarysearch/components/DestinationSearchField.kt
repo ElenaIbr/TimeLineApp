@@ -1,4 +1,4 @@
-package com.example.timelineapp.ui.itinerarysearch.destinationsearch
+package com.example.timelineapp.ui.bestitinerarysearch.destinationsearch
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,8 +21,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.timelineapp.ui.itinerarysearch.viewmodel.DestinationSearchViewModel
+import com.example.timelineapp.ui.bestitinerarysearch.viewmodel.DestinationSearchViewModel
 
 @Composable
 fun DestinationSearchField(
@@ -92,7 +91,7 @@ fun DestinationSearchField(
                 searchState.places.forEach { place ->
                     item {
                         Text(
-                            text = place.city + ", " + place.address,
+                            text = place.address,
                             style = MaterialTheme.typography.h6,
                             color = MaterialTheme.colors.onBackground,
                             modifier = Modifier
@@ -100,7 +99,7 @@ fun DestinationSearchField(
                                 .padding(horizontal = 20.dp, vertical = 12.dp)
                                 .wrapContentWidth(Alignment.Start)
                                 .clickable {
-                                    searchViewModel.setPlace(place.city + ", " + place.address)
+                                    searchViewModel.setPlace(place.address)
                                     onPlaceChosen(place.placeId)
                                 }
                         )

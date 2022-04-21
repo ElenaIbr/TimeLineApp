@@ -1,4 +1,4 @@
-package com.example.timelineapp.ui.itinerarysearch.viewmodel
+package com.example.timelineapp.ui.bestitinerarysearch.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.timelineapp.domain.model.Place
@@ -6,7 +6,7 @@ import com.example.timelineapp.domain.usecase.get_all_places.GetAllPlacesUseCase
 import com.example.timelineapp.utilits.Resource
 import androidx.lifecycle.viewModelScope
 import com.example.timelineapp.data.network.remote.dto.convertToPlace
-import com.example.timelineapp.ui.itinerarysearch.state.SearchUIState
+import com.example.timelineapp.ui.bestitinerarysearch.state.SearchUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,9 +14,8 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-
 @HiltViewModel
-class DepartureSearchViewModel @Inject constructor(
+class DestinationSearchViewModel @Inject constructor(
     private val getAllPlacesUseCase: GetAllPlacesUseCase
 ): ViewModel() {
 
@@ -31,9 +30,8 @@ class DepartureSearchViewModel @Inject constructor(
                     result.data?.forEach { place ->
                         resultList.add(place.convertToPlace())
                     }
-
                     _searchState.value = SearchUIState(
-                        places = resultList.filter { it.city.contains(query) || it.address.contains(query) }
+                        places = resultList
                     )
                 }
                 is Resource.Error -> {
@@ -52,11 +50,13 @@ class DepartureSearchViewModel @Inject constructor(
     }
 
     fun setPlace(title: String) {
-        _searchState.value = SearchUIState(chosenPlace = title)
+        _searchState.value =
+            SearchUIState(chosenPlace = title)
     }
 
     fun cleanSearch() {
-        _searchState.value = SearchUIState(chosenPlace = "")
+        _searchState.value =
+            SearchUIState(chosenPlace = "")
     }
 
     private fun actorsListData(): List<Place> {
@@ -65,13 +65,7 @@ class DepartureSearchViewModel @Inject constructor(
                 id = 0,
                 placeId = "3",
                 city = "Delft",
-                address = "address"
-            ),
-            Place(
-                id = 1,
-                placeId = "4",
-                city = "Rijswijk",
-                address = "address"
+                address = "Phoenixstraat 49, 2611AL Delft"
             )
         )
         val places = mutableListOf<Place>()
@@ -81,3 +75,4 @@ class DepartureSearchViewModel @Inject constructor(
         return places
     }
 }
+

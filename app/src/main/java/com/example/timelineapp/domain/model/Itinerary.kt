@@ -1,5 +1,7 @@
 package com.example.timelineapp.domain.model
 
+import com.example.timelineapp.data.database.model.StorageItinerary
+
 data class Itinerary(
     val id: Int,
     val departureId: Int,
@@ -19,3 +21,25 @@ data class Itinerary(
     val carRentImage: String,
     val carRentPhone: String
 )
+
+fun Itinerary.convertToStorageItinerary(): StorageItinerary {
+    return StorageItinerary(
+        id = this.id,
+        departureId = this.departureId,
+        destinationId = this.destinationId,
+        distance = this.distance,
+        flightTitle = this.flightTitle,
+        flightNumber = this.flightNumber,
+        flightDate = this.flightDate,
+        hotelTitle = this.hotelTitle,
+        hotelCity = this.hotelCity,
+        hotelAddress = this.hotelAddress,
+        hotelImage = this.hotelImage,
+        hotelPhone = this.hotelPhone,
+        carRentTitle = this.carRentTitle,
+        carRentCity = this.carRentCity,
+        carRentAddress = this.carRentAddress,
+        carRentImage = this.carRentImage,
+        carRentPhone = this.carRentPhone
+    )
+}

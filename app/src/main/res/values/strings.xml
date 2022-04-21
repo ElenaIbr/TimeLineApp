@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">TimeLineApp</string>
+    <string name="app_name">TimelineApp</string>
+    <string name="create_new">CREATE NEW</string>
+    <string name="saved_itineraries">SAVED ITINERARIES</string>
+    <string name="create_btn_title">CREATE</string>
+    <string name="no_itineraries_label">no itineraries found</string>
+    <string name="best_itinerary">The Best Itinerary</string>
+    <string name="best_flight">Best Flight</string>
+    <string name="best_hotel">Best Hotel</string>
+    <string name="best_car_rent">The Car Rent</string>
 </resources>
+
+
