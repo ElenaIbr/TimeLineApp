@@ -1,7 +1,7 @@
 package com.example.timelineapp.utilits
 
 object Constants {
-    const val BASE_URL = "https://stackoverflow.com/"
+    const val BASE_URL = "http://10.0.2.2:8080/"
     const val ITINERARY_TABLE_TITLE = "itinerary_table"
 
     const val DEPARTURE_ID = "departureId"

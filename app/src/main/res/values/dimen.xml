@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="search_field_height">200dp</dimen>
+    <dimen name="search_field_height">230dp</dimen>
     <dimen name="itinerary_item_horizontal_padding">4dp</dimen>
     <dimen name="itinerary_item_vertical_padding">2dp</dimen>
     <dimen name="itinerary_item_corner">4dp</dimen>

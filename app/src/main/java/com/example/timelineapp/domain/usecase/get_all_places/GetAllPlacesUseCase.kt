@@ -1,5 +1,6 @@
 package com.example.timelineapp.domain.usecase.get_all_places
 
+import android.util.Log
 import com.example.timelineapp.data.database.repository.ItineraryRepository
 import com.example.timelineapp.data.network.remote.dto.PlaceDto
 import com.example.timelineapp.domain.repository.BestItineraryRepository
@@ -24,9 +25,9 @@ class GetAllPlacesUseCase @Inject constructor(
             }*/
             emit(Resource.Success(places))
         } catch(e: HttpException){
-            emit(Resource.Error<List<PlaceDto>>(e.localizedMessage ?: "An unexpected error"))
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error"))
         } catch (e: IOException){
-            emit(Resource.Error<List<PlaceDto>>("Couldn't reach server"))
+            emit(Resource.Error("Couldn't reach server"))
         }
     }
 }

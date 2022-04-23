@@ -35,11 +35,8 @@ class DestinationSearchViewModel @Inject constructor(
                     )
                 }
                 is Resource.Error -> {
-                    /*_searchState.value = SearchUIState(
-                        error = result.message ?: "An unexpected error"
-                    )*/
                     _searchState.value = SearchUIState(
-                        places = actorsListData().filter { it.city.contains(query) || it.address.contains(query) }
+                        error = result.message ?: "An unexpected error"
                     )
                 }
                 is Resource.Loading -> {

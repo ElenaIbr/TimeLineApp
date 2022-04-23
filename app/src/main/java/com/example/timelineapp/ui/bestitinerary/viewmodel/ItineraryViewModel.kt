@@ -49,13 +49,13 @@ class ItineraryViewModel @Inject constructor(
                     _itineraryState.value = ItineraryState(itinerary = result.data?.convertToItinerary())
                 }
                 is Resource.Error -> {
-                    /*_state.value = ItineraryState(
-                        error = result.message ?: "An unexpected error"
-                    )*/
                     _itineraryState.value = ItineraryState(
+                        error = result.message ?: "An unexpected error"
+                    )
+                    /*_itineraryState.value = ItineraryState(
                         itinerary = TempAppData.itinerary.convertToItinerary()
                     )
-                    _itineraryState.value.date = itineraryDate
+                    _itineraryState.value.date = itineraryDate*/
                 }
                 is Resource.Loading -> {
                     _itineraryState.value = ItineraryState(isLoafing = true)

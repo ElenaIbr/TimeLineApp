@@ -1,5 +1,6 @@
 package com.example.timelineapp.domain.usecase.get_itinerary
 
+import android.util.Log
 import com.example.timelineapp.data.database.TempAppData
 import com.example.timelineapp.data.database.repository.ItineraryRepository
 import com.example.timelineapp.data.network.remote.dto.ItineraryDto
@@ -27,15 +28,16 @@ class GetItineraryUseCase @Inject constructor(
         } catch(e: HttpException){
             emit(Resource.Error<ItineraryDto>(e.localizedMessage ?: "An unexpected error"))
 
-            if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
+            /*if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
                 databaseRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
-            }
+            }*/
         } catch (e: IOException){
             emit(Resource.Error<ItineraryDto>("Couldn't reach server"))
 
-            if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
+            Log.d("fergreg", e.message.toString())
+            /*if (databaseRepository.getItineraryById(TempAppData.itinerary.id) == null) {
                 databaseRepository.insertItinerary(TempAppData.itinerary.convertToStorageItinerary())
-            }
+            }*/
         }
     }
 }
