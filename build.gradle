@@ -17,3 +17,20 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+task copyFile(type: Copy) {
+    mkdir("$rootDir/icons")
+
+    def icon = "$rootDir/app/src/main/res/drawable/ic_destination.xml"
+    def toDir = "$rootDir/apk"
+
+    from icon
+    into toDir
+}
+
+task printPaths() {
+    tasks.register('printGradlePath') {
+        println project.buildscript.sourceFile
+    }
+}

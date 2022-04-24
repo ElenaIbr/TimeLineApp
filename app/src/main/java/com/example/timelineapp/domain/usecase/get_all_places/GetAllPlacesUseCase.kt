@@ -1,7 +1,5 @@
 package com.example.timelineapp.domain.usecase.get_all_places
 
-import android.util.Log
-import com.example.timelineapp.data.database.repository.ItineraryRepository
 import com.example.timelineapp.data.network.remote.dto.PlaceDto
 import com.example.timelineapp.domain.repository.BestItineraryRepository
 import com.example.timelineapp.utilits.Resource
@@ -12,17 +10,12 @@ import java.io.IOException
 import javax.inject.Inject
 
 class GetAllPlacesUseCase @Inject constructor(
-    private val networkRepository: BestItineraryRepository,
-    private val databaseRepository: ItineraryRepository
+    private val networkRepository: BestItineraryRepository
 ) {
     operator fun invoke(query: String): Flow<Resource<List<PlaceDto>>> = flow {
         try {
             emit(Resource.Loading())
             val places = networkRepository.getAllPlaces(query)
-            /*places.forEach { place ->
-                databaseRepository.insertItinerary(place.convertToStoragePlace())
-
-            }*/
             emit(Resource.Success(places))
         } catch(e: HttpException){
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error"))

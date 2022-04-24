@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.timelineapp.data.database.TempAppData
 import com.example.timelineapp.data.database.model.convertToItinerary
 import com.example.timelineapp.data.database.repository.ItineraryRepository
 import com.example.timelineapp.data.network.remote.dto.convertToItinerary
@@ -52,10 +51,6 @@ class ItineraryViewModel @Inject constructor(
                     _itineraryState.value = ItineraryState(
                         error = result.message ?: "An unexpected error"
                     )
-                    /*_itineraryState.value = ItineraryState(
-                        itinerary = TempAppData.itinerary.convertToItinerary()
-                    )
-                    _itineraryState.value.date = itineraryDate*/
                 }
                 is Resource.Loading -> {
                     _itineraryState.value = ItineraryState(isLoafing = true)
